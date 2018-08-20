@@ -13,7 +13,7 @@ import { FETCH_RECIPE, SEARCH_RECIPES } from '../actions/index';
 export function searchRecipesReducer(state = [], action) {
     switch(action.type) {
         case SEARCH_RECIPES:
-            return [action.payload.data.recipes, ...state];
+            return [action.payload.data, ...state];
     }
     return state;
 }

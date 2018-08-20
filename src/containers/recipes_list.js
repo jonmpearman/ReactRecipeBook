@@ -2,18 +2,40 @@ import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
+import RecipeCard from '../components/recipe_card';
+
 class RecipesList extends React.Component {
     constructor(props) {
         super(props);
+
+        this.renderCard = this.renderCard.bind(this);
     }
 
-    renderRecipes(recipe) {
+    renderCard(recipe) {
+        console.dir(recipe);
+
         const id = recipe.recipe_id;
         const title = recipe.title;
-        console.dir(recipe.recipe_id);
+        const imageUrl = recipe.image_url;
+        const sourceUrl = recipe.source_url;
+
         return (
             <div key={id}>
-                {title}
+                <RecipeCard
+                    title={title}
+                    imageUrl={imageUrl}
+                    sourceUrl={sourceUrl}
+                />
+            </div>
+        );
+    }
+
+    renderRecipesList(list) {
+        console.dir(list);
+
+        return (
+            <div>
+                {list.recipes.map(this.renderCard)}
             </div>
         );
     }
@@ -21,7 +43,7 @@ class RecipesList extends React.Component {
     render() {
         return (
             <div>
-                {_.map(this.props.recipes.map(this.renderRecipes))}
+                {this.props.recipes.map(this.renderRecipesList)}
             </div>
         );
     }

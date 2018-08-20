@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { searchRecipes, fetchRecipe, updateSort } from '../actions/index';
+import { searchRecipes, fetchRecipe } from '../actions/index';
 import SortButtons from './sort_buttons';
 
 class SearchBar extends React.Component {
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ searchRecipes, fetchRecipe, updateSort }, dispatch);
+    return bindActionCreators({ searchRecipes, fetchRecipe }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
