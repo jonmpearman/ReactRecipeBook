@@ -1,23 +1,15 @@
 import React from 'react';
 
-class RecipeCard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
+export default (props) => {
+    return (
+        <div>
+            <h3>{props.title}</h3>
             <div>
-                <h3>{this.props.title}</h3>
-                <div>
-                    <img src={this.props.imageUrl} />
-                </div>
-                <div>
-                    <a href={this.props.sourceUrl}>View Full Recipe</a>
-                </div>
+                <img src={props.imageUrl} />
             </div>
-        );
-    }
+            <div>
+                <a href={props.sourceUrl}>View Full Recipe</a>
+            </div>
+        </div>
+    );
 }
-
-export default RecipeCard;

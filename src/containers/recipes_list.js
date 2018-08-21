@@ -8,42 +8,34 @@ class RecipesList extends React.Component {
     constructor(props) {
         super(props);
 
-        this.renderCard = this.renderCard.bind(this);
-    }
-
-    renderCard(recipe) {
-        console.dir(recipe);
-
-        const id = recipe.recipe_id;
-        const title = recipe.title;
-        const imageUrl = recipe.image_url;
-        const sourceUrl = recipe.source_url;
-
-        return (
-            <div key={id}>
-                <RecipeCard
-                    title={title}
-                    imageUrl={imageUrl}
-                    sourceUrl={sourceUrl}
-                />
-            </div>
-        );
-    }
-
-    renderRecipesList(list) {
-        console.dir(list);
-
-        return (
-            <div>
-                {list.recipes.map(this.renderCard)}
-            </div>
-        );
+        // this.renderCard = this.renderCard.bind(this);
     }
 
     render() {
         return (
             <div>
-                {this.props.recipes.map(this.renderRecipesList)}
+                {this.props.recipes.map((recipes) => {
+                    console.dir(recipes.recipes);
+
+                    return (recipes.recipes.map((recipe) => {
+                        const id = recipe.recipe_id;
+                        const title = recipe.title;
+                        const imageUrl = recipe.image_url;
+                        const sourceUrl = recipe.source_url;
+
+                        console.dir(recipe);
+
+                        return (
+                            <div key={id}>
+                                <RecipeCard
+                                    title={title}
+                                    imageUrl={imageUrl}
+                                    sourceUrl={sourceUrl}
+                                />
+                            </div>
+                        );
+                    }));
+                })}
             </div>
         );
     }
