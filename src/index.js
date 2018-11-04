@@ -12,8 +12,8 @@ import reducers from './reducers/index';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <App />
   </Provider>
-  , document.querySelector('.container'));
+  , document.getElementById('app'));

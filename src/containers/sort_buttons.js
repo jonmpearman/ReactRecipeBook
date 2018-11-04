@@ -13,7 +13,6 @@ class SortButtons extends React.Component {
     }
 
     onInputChange(event) {
-        console.log(`SortButtons onInputChange ${event.target.value}`);
         this.props.updateSort(event.target.value);
     }
 
