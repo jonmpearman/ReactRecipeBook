@@ -2,6 +2,7 @@
   "name": "recipe-book",
   "version": "1.0.0",
   "description": "Simple recipe book app to search and save recipes",
+  "repository": "https://github.com/jonmpearman/ReactRecipeBook",
   "main": "webpack.config.js",
   "scripts": {
     "build": "NODE_ENV=production webpack --progress",
@@ -13,7 +14,6 @@
     "precommit": "eslint src --quiet"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "redux-thunk": "^2.2.0",
