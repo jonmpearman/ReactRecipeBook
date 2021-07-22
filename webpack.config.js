@@ -1,45 +1,30 @@
-const dev = process.env.NODE_ENV !== "production";
-const path = require( "path" );
-const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
-const FriendlyErrorsWebpackPlugin = require( "friendly-errors-webpack-plugin" );
-
-const plugins = [
-    new FriendlyErrorsWebpackPlugin(),
-];
-
-if ( !dev ) {
-    plugins.push( new BundleAnalyzerPlugin( {
-        analyzerMode: "static",
-        reportFilename: "webpack-report.html",
-        openAnalyzer: false,
-    } ) );
-}
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: dev ? "development" : "production",
-    context: path.join( __dirname, "src" ),
-    devtool: dev ? "none" : "source-map",
-    entry: {
-        app: "./index.js",
-    },
-    resolve: {
-        modules: [
-            path.resolve( "./src" ),
-            "node_modules",
-        ],
+    mode: 'development',
+    entry: './src/index.tsx',
+    devtool: 'inline-source-map',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'recipebook.js',
     },
     module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader",
+        rules: [{
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
             },
         ],
     },
-    output: {
-        path: path.resolve( __dirname, "dist" ),
-        filename: "[name].bundle.js",
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+        // needed during local development of warlock-ui component library
+        alias: {
+            'react': path.resolve('../warlock-ui/node_modules/react')
+        }
     },
-    plugins,
+    plugins: [
+        new HtmlWebpackPlugin({ template: 'src/index.html'}),
+    ]
 };
