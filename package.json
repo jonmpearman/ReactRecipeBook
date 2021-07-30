@@ -4,7 +4,7 @@
   "description": "Simple recipe book app to search and save recipes",
   "main": "./src/index.tsx",
   "scripts": {
-    "build-dev": "webpack"
+    "build": "webpack"
   },
   "dependencies": {
     "@emotion/react": "^11.4.0",
